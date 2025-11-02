@@ -18,5 +18,23 @@
         <button onclick="getReview()">Tạo Review</button>
         <div id="review"></div>
     </div>
+    <script>
+        async function getReview() {
+            const product = document.getElementById("product").value.trim();
+            const reviewBox = document.getElementById("review");
+            if (!product) return alert("Vui lòng nhập tên sản phẩm!");
+
+            reviewBox.innerHTML = "⏳ Đang tạo review bằng AI...";
+            
+            const res = await fetch("/review", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ product })
+            });
+
+            const data = await res.json();
+            reviewBox.innerHTML = `<b>AI Review:</b><br>${data.review}`;
+        }
+    </script>
 </body>
 </html>
