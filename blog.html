@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Blog — MGX Demo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="top">
+    <div class="wrap">
+      <header class="nav reveal" role="banner">
+        <a class="brand" href="index.html">
+          <div class="logo">MG</div>
+          <div>
+            <div style="font-weight: 700">MGX — Demo</div>
+            <div style="font-size: 12px; color: var(--muted)">
+              Mô phỏng giao diện
+            </div>
+          </div>
+        </a>
+        <nav class="menu" id="main-menu" role="navigation" aria-label="Chính">
+          <a href="index.html">Trang chủ</a>
+          <a href="features.html">Tính năng</a>
+          <a href="gallery.html">Giao diện</a>
+          <a href="contact.html">Liên hệ</a>
+          <a href="blog.html" class="active">Blog</a>
+          <a class="cta" href="#">Tải về</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          aria-controls="main-menu"
+          aria-expanded="false"
+          id="menu-toggle"
+        >
+          Menu
+        </button>
+      </header>
+
+      <main class="wrap">
+        <div class="page-header reveal">
+          <h1>Blog và Tin tức</h1>
+          <p style="color: var(--muted)">
+            Cập nhật những kiến thức, hướng dẫn và tin tức mới nhất về thiết kế
+            và công nghệ.
+          </p>
+        </div>
+
+        <section id="posts" class="blog-section" aria-label="Bài viết mới nhất">
+          <div class="blog-grid">
+            <article class="blog-post reveal" id="post1">
+              <div class="post-meta">
+                <span class="category">Thiết Kế</span> •
+                <span class="date">28 Tháng 10, 2025</span>
+              </div>
+              <h4>
+                <a href="#post1"
+                  >Top 5 mẹo thiết kế giao diện Dark Mode hiệu quả</a
+                >
+              </h4>
+              <p>
+                Khám phá những xu hướng và thủ thuật giúp bạn tạo ra các thiết
+                kế chế độ tối hiện đại, thu hút người dùng hơn.
+              </p>
+              <a href="#post1" class="read-more">Đọc thêm &rarr;</a>
+            </article>
+
+            <article
+              class="blog-post reveal"
+              style="transition-delay: 0.1s"
+              id="post2"
+            >
+              <div class="post-meta">
+                <span class="category">Kỹ Thuật</span> •
+                <span class="date">20 Tháng 10, 2025</span>
+              </div>
+              <h4>
+                <a href="#post2"
+                  >Hướng dẫn tối ưu hóa CSS để tăng tốc độ tải trang</a
+                >
+              </h4>
+              <p>
+                Cách viết CSS hiệu quả, dễ bảo trì và giúp trang web của bạn tải
+                nhanh hơn đáng kể mà không cần dùng thư viện lớn.
+              </p>
+              <a href="#post2" class="read-more">Đọc thêm &rarr;</a>
+            </article>
+
+            <article
+              class="blog-post reveal"
+              style="transition-delay: 0.2s"
+              id="post3"
+            >
+              <div class="post-meta">
+                <span class="category">Coding</span> •
+                <span class="date">15 Tháng 10, 2025</span>
+              </div>
+              <h4>
+                <a href="#post3"
+                  >Làm chủ Flexbox và CSS Grid trong các dự án hiện đại</a
+                >
+              </h4>
+              <p>
+                Sử dụng các công cụ layout hiện đại để xây dựng bố cục phức tạp
+                một cách đơn giản, tương thích tốt trên mọi thiết bị.
+              </p>
+              <a href="#post3" class="read-more">Đọc thêm &rarr;</a>
+            </article>
+
+            <article
+              class="blog-post reveal"
+              style="transition-delay: 0.3s"
+              id="post4"
+            >
+              <div class="post-meta">
+                <span class="category">Thị Trường</span> •
+                <span class="date">01 Tháng 10, 2025</span>
+              </div>
+              <h4>
+                <a href="#post4"
+                  >Xu hướng Web Development năm 2026: Điều gì đang chờ đợi?</a
+                >
+              </h4>
+              <p>
+                Phân tích các công nghệ và nền tảng đang nổi lên sẽ định hình
+                tương lai của việc phát triển web.
+              </p>
+              <a href="#post4" class="read-more">Đọc thêm &rarr;</a>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 MGX. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <button id="back-to-top" title="Quay lại đầu trang">↑</button>
+
+    <!-- <script>
+      const App = {
+        // Khởi tạo tất cả các chức năng
+        init: function () {
+          this.pageFadeIn();
+          this.toggleMenu();
+          this.initLightbox();
+          this.scrollReveal();
+          this.initContactForm();
+          this.initBackToTop();
+        },
+
+        /**
+         * pageFadeIn() — Hiệu ứng mở trang
+         */
+        pageFadeIn: function () {
+          document.body.classList.add("page-loaded");
+        },
+
+        /**
+         * toggleMenu() — Đóng/mở menu di động
+         */
+        toggleMenu: function () {
+          const menuToggle = document.getElementById("menu-toggle");
+          const mainMenu = document.getElementById("main-menu");
+
+          if (menuToggle && mainMenu) {
+            menuToggle.addEventListener("click", () => {
+              const isExpanded =
+                menuToggle.getAttribute("aria-expanded") === "true" || false;
+              mainMenu.classList.toggle("is-open");
+              menuToggle.setAttribute("aria-expanded", !isExpanded);
+            });
+
+            // Đóng menu khi nhấp vào link (trên mobile)
+            mainMenu.querySelectorAll("a").forEach((link) => {
+              link.addEventListener("click", () => {
+                if (mainMenu.classList.contains("is-open")) {
+                  mainMenu.classList.remove("is-open");
+                  menuToggle.setAttribute("aria-expanded", "false");
+                }
+              });
+            });
+          }
+        },
+
+        /**
+         * initLightbox() — Mở ảnh lớn trong gallery (Chỉ giữ hàm để đồng bộ)
+         */
+        initLightbox: function () {
+          // Không làm gì ở trang này
+        },
+
+        /**
+         * scrollReveal() — Hiệu ứng cuộn mượt fade-in
+         */
+        scrollReveal: function () {
+          const revealElements = document.querySelectorAll(".reveal");
+
+          const handleScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach((el) => {
+              const elTop = el.getBoundingClientRect().top;
+              if (elTop < windowHeight * 0.8) {
+                el.classList.add("is-visible");
+              }
+            });
+          };
+
+          window.addEventListener("scroll", handleScroll);
+          window.addEventListener("resize", handleScroll);
+          handleScroll();
+        },
+
+        /**
+         * initContactForm() — Xử lý gửi form (Chỉ giữ hàm để đồng bộ)
+         */
+        initContactForm: function () {
+          // Không làm gì ở trang này
+        },
+
+        // Hàm hỗ trợ quay lại đầu trang
+        initBackToTop: function () {
+          const backToTopButton = document.getElementById("back-to-top");
+          if (!backToTopButton) return;
+
+          const scrollFunction = () => {
+            if (
+              document.body.scrollTop > 300 ||
+              document.documentElement.scrollTop > 300
+            ) {
+              backToTopButton.style.display = "block";
+            } else {
+              backToTopButton.style.display = "none";
+            }
+          };
+
+          window.addEventListener("scroll", scrollFunction);
+          backToTopButton.addEventListener("click", () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+          });
+        },
+      };
+
+      // Chạy App khi DOM đã tải xong
+      document.addEventListener("DOMContentLoaded", () => App.init());
+    </script> -->
+    <script src="script.js"></script>
+  </body>
+</html>
