@@ -1,0 +1,35 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from openai import OpenAI
+import os
+
+app = Flask(__name__)
+CORS(app) 
+API_KEY = "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"
+client = OpenAI(api_key=API_KEY)
+@app.route('/review', methods=['POST'])
+def get_ai_review():
+    try:
+        data = request.get_json()
+        product_name = data.get('product')
+        if not product_name:
+            return jsonify({"error": "Vui lòng cung cấp tên sản phẩm"}), 400
+        messages = [
+            {"role": "system", "content": "Bạn là một chuyên gia đánh giá sản phẩm có kinh nghiệm, giọng văn chuyên nghiệp, trung lập và cung cấp thông tin chi tiết (ưu, nhược điểm, và kết luận). Hãy viết một bài đánh giá ngắn (khoảng 100 từ) bằng tiếng Việt."},
+            {"role": "user", "content": f"Đánh giá sản phẩm sau: {product_name}"}
+        ]
+
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo", 
+            messages=messages,
+            temperature=0.7, 
+        )
+
+        ai_review = response.choices[0].message.content
+        formatted_review = ai_review.replace('\n', '<br>')        
+        return jsonify({"review": formatted_review})
+    except Exception as e:
+        print(f"Lỗi khi gọi API OpenAI: {e}")
+        return jsonify({"error": "Lỗi máy chủ trong quá trình tạo review."}), 500
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
