@@ -47,7 +47,13 @@
             padding: 12px 16px;
             border-radius: 15px;
             max-width: 75%;
-            line-height: 1.4;
+            line-height: 1.4;from openai import OpenAI
+
+client = OpenAI(api_key="sk-abc123...")
+
+resp = client.models.list()
+print(resp)
+
             word-wrap: break-word;
             animation: fadeIn 0.3s ease-in;
         }
@@ -139,7 +145,7 @@
             messages.scrollTop = messages.scrollHeight;
 
             try {
-                const res = await fetch("/review", {
+                const res = await fetch ("http://127.0.0.1:5000/review", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ product })
