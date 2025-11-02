@@ -1,0 +1,405 @@
+/* style.css: CSS HOÀN CHỈNH CHO MGX DEMO */
+
+/* ------------------------------------- */
+/* 1. CSS Variables & Theme */
+/* ------------------------------------- */
+
+:root {
+  /* DARK MODE DEFAULTS */
+  --bg: #0d121c; /* nền tổng thể */
+  --card: #141b26; /* nền card/block */
+  --muted: #9aa4b2; /* chữ phụ, placeholder */
+  --text: #e6eef8; /* chữ chính */
+  --accent: #5eead4; /* màu nổi bật (Cyan) */
+  --accent-2: #7c5cff; /* màu phụ (Violet) */
+  --input-bg: rgba(255, 255, 255, 0.08); /* nền input/textarea */
+  --glass: rgba(255, 255, 255, 0.04); /* border/line mờ */
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Bóng sâu hơn */
+  --radius: 14px;
+  --container: 1100px;
+}
+
+/* LIGHT MODE OVERRIDES */
+body.light-mode {
+  --bg: #f8f8fa; /* Nền sáng */
+  --card: #ffffff; /* Card trắng */
+  --muted: #6b7280;
+  --text: #1f2937;
+  --accent: #007bff; /* Xanh dương nổi bật hơn */
+  --accent-2: #6d28d9;
+  --input-bg: #f3f4f6;
+  --glass: rgba(0, 0, 0, 0.05);
+  --border: rgba(0, 0, 0, 0.1);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ------------------------------------- */
+/* 2. BASE STYLES & TYPOGRAPHY */
+/* ------------------------------------- */
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Thêm gradient cho nền tối mặc định */
+body:not(.light-mode) {
+  background: linear-gradient(180deg, var(--bg), #071021 60%);
+}
+
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px 24px;
+  flex-grow: 1; /* Đẩy footer xuống dưới */
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--accent-2);
+}
+
+/* ------------------------------------- */
+/* 3. Navigation */
+/* ------------------------------------- */
+
+header.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+nav.menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav.menu a {
+  color: var(--muted);
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+}
+
+nav.menu a:hover,
+nav.menu a.active {
+  color: var(--text);
+}
+
+/* Nút CTA (Tải về) */
+nav.menu a.cta {
+  background: var(--accent-2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+nav.menu a.cta:hover {
+  background: #6a4bff; /* Tối hơn */
+}
+
+/* Nút Dark/Light Mode */
+#theme-toggle {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background 0.2s;
+}
+#theme-toggle:hover {
+  background: var(--glass);
+}
+
+.menu-toggle {
+  display: none; /* Mặc định ẩn trên desktop */
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ------------------------------------- */
+/* 4. Contact Form Styles */
+/* ------------------------------------- */
+
+.page-header {
+  text-align: center;
+  margin: 40px 0;
+}
+.page-header .subhead {
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-section {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text);
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.2);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* ------------------------------------- */
+/* 5. Utility & General Components */
+/* ------------------------------------- */
+
+/* Nút chung */
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-block;
+  text-align: center;
+  transition: opacity 0.2s, background 0.2s;
+}
+.btn.primary {
+  background: var(--accent);
+  color: #1f2937; /* Màu chữ luôn tối để nổi bật */
+}
+.btn.primary:hover {
+  opacity: 0.85;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 20px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+/* Back to top button */
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: none;
+  z-index: 40;
+}
+
+/* ------------------------------------- */
+/* 6. Modal (Pop-up Chào mừng) */
+/* ------------------------------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.modal-overlay.is-open {
+  display: flex;
+  opacity: 1;
+}
+.modal-content {
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  max-width: 400px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+  border: 1px solid var(--border);
+}
+.modal-overlay.is-open .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-close-btn {
+  background: var(--accent);
+  color: #1f2937;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ------------------------------------- */
+/* 7. Responsive & Mobile Menu */
+/* ------------------------------------- */
+
+@media (max-width: 560px) {
+  header.nav {
+    padding: 10px 14px;
+  }
+
+  nav.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    background: var(--card);
+    border-radius: 10px;
+    padding: 8px;
+    gap: 2px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  nav.menu.is-open {
+    display: flex;
+  }
+  nav.menu a {
+    padding: 12px;
+    width: 100%;
+    text-align: center;
+  }
+  nav.menu a.cta {
+    margin-top: 10px;
+  }
+  .menu-toggle {
+    display: block; /* Hiện nút toggle trên mobile */
+  }
+  .wrap {
+    padding: 20px 14px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .contact-section {
+    padding: 20px;
+  }
+}
